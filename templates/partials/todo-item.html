@@ -1,0 +1,44 @@
+<li
+  id="todo-{{ .ID }}"
+  class="flex items-center justify-between p-3 rounded-lg border border-slate-100 bg-slate-50/50 hover:bg-slate-100/50 transition-colors"
+>
+  <div class="flex items-center space-x-3">
+    <!-- prettier-ignore -->
+    <input
+      type="checkbox"
+      {{ if .Completed }} checked {{ end }}
+      hx-post="/todos/toggle?id={{ .ID }}"
+      hx-target="#todo-list"
+      hx-swap="innerHTML scroll:no-change"
+      class="h-4 w-4 rounded border-slate-300 text-slate-900 focus:ring-slate-950 cursor-pointer"
+    />
+    <span
+      class="text-sm font-medium {{ if .Completed }}line-through text-slate-400{{ else }}text-slate-700{{ end }}"
+    >
+      {{ .Title }}
+    </span>
+  </div>
+
+  <button
+    hx-delete="/todos/delete?id={{ .ID }}"
+    hx-target="#todo-list"
+    hx-swap="innerHTML scroll:no-change"
+    class="inline-flex items-center justify-center rounded-md text-sm font-medium text-slate-400 hover:text-red-600 hover:bg-red-50 h-8 w-8 transition-colors"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M3 6h18"></path>
+      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+    </svg>
+  </button>
+</li>

@@ -1,0 +1,33 @@
+<div
+  class="sticky top-0 bg-white z-10 flex items-center justify-between text-xs text-slate-500 pb-2 px-1 border-b border-slate-100 mb-3"
+>
+  {{ $total := len . }} {{ $completed := 0 }} {{ range . }} {{ if .Completed }}
+  {{ $completed = add $completed 1 }} {{ end }} {{ end }}
+
+  <div class="flex gap-2">
+    <span
+      class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-700 border border-slate-200"
+    >
+      Pendentes:
+      <strong class="ml-1 text-slate-900">{{ sub $total $completed }}</strong>
+    </span>
+    <span
+      class="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700 border border-emerald-200/60"
+    >
+      Concluídas:
+      <strong class="ml-1 text-emerald-900">{{ $completed }}</strong>
+    </span>
+  </div>
+
+  <span class="font-medium text-slate-400">Total: {{ $total }}</span>
+</div>
+
+<ul class="space-y-2">
+  {{ range . }} {{ template "todo-item.html" . }} {{ else }}
+  <p
+    class="text-sm text-slate-500 text-center py-8 border border-dashed border-slate-200 rounded-lg bg-slate-50/50"
+  >
+    Nenhuma tarefa encontrada.
+  </p>
+  {{ end }}
+</ul>
