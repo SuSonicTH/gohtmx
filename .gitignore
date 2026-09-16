@@ -9,3 +9,7 @@
 *.sqlite-shm
 
 todos.db*
+htmx
+htmx.exe
+
+.vscode

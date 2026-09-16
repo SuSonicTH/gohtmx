@@ -13,10 +13,10 @@ import (
 	"htmx/handlers"
 )
 
-// parseTemplates mantido igual...
+// parseTemplates remains unchanged...
 
 func main() {
-	// Inicializa o banco de dados
+	// Initialize the database
 	database := db.InitDB()
 	defer database.Close()
 
@@ -25,7 +25,7 @@ func main() {
 		log.Fatalf("Error loading templates: %v", err)
 	}
 
-	// Injeta o banco no Handler
+	// Inject the database into the handler
 	todoHandler := handlers.NewTodoHandler(database, tmpl)
 
 	mux := http.NewServeMux()
@@ -44,13 +44,13 @@ func main() {
 }
 
 func parseTemplates() (*template.Template, error) {
-	// 1. Registra as funções matemáticas no FuncMap do template
+	// 1. Register the mathematical functions in the template FuncMap
 	funcMap := template.FuncMap{
 		"add": func(a, b int) int { return a + b },
 		"sub": func(a, b int) int { return a - b },
 	}
 
-	// 2. Aplica o FuncMap antes de parsear os arquivos
+	// 2. Apply the FuncMap before parsing the files
 	tmpl := template.New("").Funcs(funcMap)
 
 	err := filepath.Walk("templates", func(path string, info os.FileInfo, err error) error {
