@@ -22,7 +22,7 @@ func main() {
 
 	tmpl, err := parseTemplates()
 	if err != nil {
-		log.Fatalf("Erro ao carregar templates: %v", err)
+		log.Fatalf("Error loading templates: %v", err)
 	}
 
 	// Injeta o banco no Handler
@@ -39,7 +39,7 @@ func main() {
 	mux.HandleFunc("/todos/delete", todoHandler.Delete)
 	mux.HandleFunc("/", todoHandler.Index)
 
-	fmt.Println("Servidor rodando em http://localhost:8080")
+	fmt.Println("Server running at http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", mux))
 }
 

@@ -1,25 +1,12 @@
 <div class="p-6 space-y-6">
-  <form
-    id="todo-form"
-    hx-post="/todos/create"
-    hx-target="#todo-list"
-    hx-swap="innerHTML scroll:no-change"
-    hx-on:htmx:after-request="document.getElementById('todo-form').reset()"
-    class="flex gap-2"
-  >
-    <input
-      type="text"
-      name="title"
-      placeholder="Adicionar nova tarefa..."
-      required
-      class="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2"
-    />
+  <form id="todo-form" hx-post="/todos/create" hx-target="#todo-list" hx-swap="innerHTML scroll:no-change"
+    hx-on:htmx:after-request="document.getElementById('todo-form').reset()" class="flex gap-2">
+    <input type="text" name="title" placeholder="Add a new task..." required
+      class="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2" />
 
-    <button
-      type="submit"
-      class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 bg-slate-900 text-slate-50 hover:bg-slate-900/90 h-10 px-4 py-2 shrink-0"
-    >
-      Adicionar
+    <button type="submit"
+      class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 bg-slate-900 text-slate-50 hover:bg-slate-900/90 h-10 px-4 py-2 shrink-0">
+      Add
     </button>
   </form>
 

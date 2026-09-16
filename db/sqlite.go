@@ -10,7 +10,7 @@ import (
 func InitDB() *sql.DB {
 	db, err := sql.Open("sqlite", "todos.db")
 	if err != nil {
-		log.Fatalf("Erro ao abrir banco de dados: %v", err)
+		log.Fatalf("Error opening database: %v", err)
 	}
 
 	db.SetMaxOpenConns(1)
@@ -24,7 +24,7 @@ func InitDB() *sql.DB {
 
 	_, err = db.Exec(query)
 	if err != nil {
-		log.Fatalf("Erro ao criar tabela: %v", err)
+		log.Fatalf("Error creating table: %v", err)
 	}
 
 	return db

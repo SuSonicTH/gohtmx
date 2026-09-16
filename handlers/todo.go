@@ -68,7 +68,7 @@ func (h *TodoHandler) Index(w http.ResponseWriter, r *http.Request) {
 
 func (h *TodoHandler) Create(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		http.Error(w, "Método não permitido", http.StatusMethodNotAllowed)
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
@@ -92,21 +92,21 @@ func (h *TodoHandler) Create(w http.ResponseWriter, r *http.Request) {
 
 	err = h.tmpl.ExecuteTemplate(w, "todo-list.html", todos)
 	if err != nil {
-		log.Printf("Erro ao renderizar template todo-list.html: %v", err)
+		log.Printf("Error rendering todo-list.html template: %v", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
 
 func (h *TodoHandler) Toggle(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		http.Error(w, "Método não permitido", http.StatusMethodNotAllowed)
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
 	idStr := r.URL.Query().Get("id")
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
-		http.Error(w, "ID inválido", http.StatusBadRequest)
+		http.Error(w, "Invalid ID", http.StatusBadRequest)
 		return
 	}
 
@@ -130,14 +130,14 @@ func (h *TodoHandler) Toggle(w http.ResponseWriter, r *http.Request) {
 
 func (h *TodoHandler) Delete(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodDelete {
-		http.Error(w, "Método não permitido", http.StatusMethodNotAllowed)
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
 	idStr := r.URL.Query().Get("id")
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
-		http.Error(w, "ID inválido", http.StatusBadRequest)
+		http.Error(w, "Invalid ID", http.StatusBadRequest)
 		return
 	}
 
